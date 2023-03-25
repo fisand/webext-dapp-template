@@ -6,10 +6,11 @@ Fork from [neo-hack/webext-template](https://github.com/neo-hack/webext-template
 
 ## Features
 
+- 🐸 **Support Dapp in webext (current only support Metamask)**
 - ⚡️ **Instant HMR** - use **Vite** on dev (no more refresh!)
 - 🌐 React
 - 💬 Effortless communications - powered by [`webext-bridge`](https://github.com/antfu/webext-bridge)
-- 🍃 [tailwindcss](https://tailwindcss.come/) - on-demand CSS utilities
+- 🍃 unocss
 - 🦾 [TypeScript](https://www.typescriptlang.org/) - type safe
 - 🖥 Content Script - Use React even in content script
 - 🌍 WebExtension - isomorphic extension for Chrome, Firefox, and others
