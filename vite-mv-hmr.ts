@@ -77,7 +77,7 @@ export const MV3Hmr = (): PluginOption => {
         }
       }
 
-      Object.keys(server.config.build.rollupOptions.input!).map((entry) => writeToDisk(`/${entry}/main.ts`))
+      Object.keys(server.config.build.rollupOptions.input!).map((entry) => writeToDisk(`/${entry}/main.tsx`))
     },
   }
 }
