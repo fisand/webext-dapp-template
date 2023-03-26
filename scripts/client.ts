@@ -414,14 +414,14 @@ export function createHotContext(ownerPath: string): ViteHotContext {
       disposeMap.set(ownerPath, cb)
     },
 
-    // @ts-expect-error untyped
     prune(cb: (data: any) => void) {
       pruneMap.set(ownerPath, cb)
     },
 
     // TODO
 
-    decline() {},
+    // decline() {},
+    acceptExports() {},
 
     invalidate() {
       // TODO should tell the server to re-perform hmr propagation
