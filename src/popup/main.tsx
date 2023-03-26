@@ -23,6 +23,8 @@ const client = createClient({
       chains,
       options: {
         getProvider: () => metamaskProvider,
+        shimDisconnect: true,
+        UNSTABLE_shimOnConnectSelectAccount: true,
       } as any,
     }),
   ],
