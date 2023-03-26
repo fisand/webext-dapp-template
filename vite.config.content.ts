@@ -18,12 +18,14 @@ export default defineConfig({
     emptyOutDir: false,
     sourcemap: isDev ? 'inline' : false,
     lib: {
-      entry: r('src/contentScripts/index.tsx'),
+      entry: [r('src/contentScripts/index.tsx'), r('src/contentScripts/sdk.ts')],
       formats: ['es'],
     },
     rollupOptions: {
       output: {
-        entryFileNames: 'index.global.js',
+        entryFileNames: (info) => {
+          return `${info.name === 'index' ? 'index.global' : info.name}.js`
+        },
       },
     },
   },
