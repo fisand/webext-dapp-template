@@ -8,3 +8,9 @@ declare module 'webext-bridge' {
     'get-current-tab': ProtocolWithReturn<{ tabId: number }, { title: string }>
   }
 }
+
+declare global {
+  interface Window {
+    ringsnode: any
+  }
+}

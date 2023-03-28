@@ -17,18 +17,22 @@ import 'uno.css'
     console.log(`[webext-template] Navigate from page "${data.title}"`)
   })
 
+  window.addEventListener('message', (e) => {
+    console.log(e, e.data)
+  })
+
   // mount component to context window
   const container = document.createElement('div')
   const root = document.createElement('div')
   container.className = 'webext-template'
   const styleEl = document.createElement('link')
   const scriptEl = document.createElement('script')
-  scriptEl.innerHTML = `setTimeout(() => {
-    console.log(window.ethereum)
-  }, 1000)`
   const shadowDOM = container.attachShadow?.({ mode: __DEV__ ? 'open' : 'closed' }) || container
+
+  scriptEl.setAttribute('src', browser.runtime.getURL('dist/contentScripts/sdk.js'))
   styleEl.setAttribute('rel', 'stylesheet')
   styleEl.setAttribute('href', browser.runtime.getURL('dist/contentScripts/style.css'))
+
   shadowDOM.appendChild(styleEl)
   shadowDOM.appendChild(root)
   shadowDOM.appendChild(scriptEl)

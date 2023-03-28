@@ -1,5 +1,11 @@
-;(window as any).fisand = (name: string) => {
-  console.log(`@fisand: hello, ${name}`)
+window.ringsnode = {
+  emit: (message: string) => {
+    window.postMessage(
+      {
+        type: 'inject-rings',
+        message,
+      },
+      '*'
+    )
+  },
 }
-
-export {}
