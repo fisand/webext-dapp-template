@@ -15,10 +15,7 @@ import 'uno.css'
   // communication example: send previous tab title from background page
   onMessage('tab-prev', ({ data }) => {
     console.log(`[webext-template] Navigate from page "${data.title}"`)
-  })
-
-  window.addEventListener('message', (e) => {
-    console.log(e, e.data)
+    window.postMessage(`[webext-template] Navigate from page "${data.title}"`)
   })
 
   // mount component to context window
