@@ -10,8 +10,9 @@ declare module 'webext-bridge' {
 }
 
 declare module '@metamask/post-message-stream' {
-  interface WindowPostMessageStream<D = any> {
+  interface WindowPostMessageStream<P = any, D = any> {
     on: (type: 'data' | 'error', cb: (data: D) => void) => void
+    write: (data: P) => boolean
   }
 }
 

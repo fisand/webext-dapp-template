@@ -8,6 +8,10 @@ const fisandStream = new WindowPostMessageStream({
   target: CONTENT_SCRIPT,
 })
 
+fisandStream.on('data', (message) => {
+  console.log(message)
+})
+
 window.fisand = {
   connectionStream: fisandStream,
 }

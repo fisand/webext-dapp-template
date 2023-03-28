@@ -17,7 +17,12 @@ const setupPageStream = () => {
     target: INPAGE,
   })
 
-  pageStream.on('data', (data) => console.log(data + ', world'))
+  pageStream.on('data', (data) => {
+    console.log(data + ', world')
+    setTimeout(() => {
+      pageStream.write('callback')
+    }, 1500)
+  })
 }
 
 // init stream
