@@ -32,7 +32,7 @@ export async function getManifest() {
       48: './assets/wallet.png',
       128: './assets/wallet.png',
     },
-    permissions: ['tabs', 'storage', 'activeTab', 'runtime', 'http://*/', 'https://*/'],
+    permissions: ['tabs', 'storage', 'activeTab', 'http://*/', 'https://*/'],
     // host_permissions: ['*://*/*'],
     content_scripts: [
       {

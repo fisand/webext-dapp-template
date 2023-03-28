@@ -1,15 +1,13 @@
-window.addEventListener('message', (e) => {
-  console.log(e)
+import { WindowPostMessageStream } from '@metamask/post-message-stream'
+
+const CONTENT_SCRIPT = 'fisand-contentscript'
+const INPAGE = 'fisand-inpage'
+
+const fisandStream = new WindowPostMessageStream({
+  name: INPAGE,
+  target: CONTENT_SCRIPT,
 })
 
-window.ringsnode = {
-  emit: (message: string) => {
-    window.postMessage(
-      {
-        type: 'inject-rings',
-        message,
-      },
-      '*'
-    )
-  },
+window.fisand = {
+  connectionStream: fisandStream,
 }

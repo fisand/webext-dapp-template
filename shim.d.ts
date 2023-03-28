@@ -9,8 +9,14 @@ declare module 'webext-bridge' {
   }
 }
 
+declare module '@metamask/post-message-stream' {
+  interface WindowPostMessageStream<D = any> {
+    on: (type: 'data' | 'error', cb: (data: D) => void) => void
+  }
+}
+
 declare global {
   interface Window {
-    ringsnode: any
+    fisand: any
   }
 }

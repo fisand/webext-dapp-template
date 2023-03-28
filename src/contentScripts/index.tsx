@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import { WindowPostMessageStream } from '@metamask/post-message-stream'
 import { createRoot } from 'react-dom/client'
 import { onMessage } from 'webext-bridge'
 
@@ -6,6 +7,23 @@ import { App } from './views/App'
 
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
+
+const CONTENT_SCRIPT = 'fisand-contentscript'
+const INPAGE = 'fisand-inpage'
+
+const setupPageStream = () => {
+  const pageStream = new WindowPostMessageStream({
+    name: CONTENT_SCRIPT,
+    target: INPAGE,
+  })
+
+  pageStream.on('data', (data) => console.log(data + ', world'))
+}
+
+// init stream
+;(() => {
+  setupPageStream()
+})()
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
 // eslint-disable-next-line import/newline-after-import
@@ -15,7 +33,6 @@ import 'uno.css'
   // communication example: send previous tab title from background page
   onMessage('tab-prev', ({ data }) => {
     console.log(`[webext-template] Navigate from page "${data.title}"`)
-    window.postMessage(`[webext-template] Navigate from page "${data.title}"`)
   })
 
   // mount component to context window

@@ -16,14 +16,15 @@ export default defineConfig({
     outDir: r('extension/dist/contentScripts'),
     cssCodeSplit: false,
     emptyOutDir: false,
-    sourcemap: isDev ? 'inline' : false,
+    sourcemap: false,
     lib: {
-      entry: r('src/contentScripts/index.tsx'),
-      formats: ['es'],
+      entry: r('src/contentScripts/sdk.ts'),
+      formats: ['umd'],
+      name: 'fisand_sdk',
     },
     rollupOptions: {
       output: {
-        entryFileNames: 'index.global.js',
+        entryFileNames: 'sdk.js',
       },
     },
   },
