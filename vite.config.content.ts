@@ -19,7 +19,8 @@ export default defineConfig({
     sourcemap: isDev ? 'inline' : false,
     lib: {
       entry: r('src/contentScripts/index.tsx'),
-      formats: ['es'],
+      formats: ['umd'],
+      name: 'fisandExt',
     },
     rollupOptions: {
       output: {

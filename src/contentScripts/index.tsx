@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
 import { WindowPostMessageStream } from '@metamask/post-message-stream'
-import { createRoot } from 'react-dom/client'
+// import { createRoot } from 'react-dom/client'
 import { onMessage } from 'webext-bridge/content-script'
 
-import { App } from './views/App'
-
+// import { App } from './views/App'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 
@@ -56,6 +55,6 @@ const setupPageStream = () => {
   shadowDOM.appendChild(root)
   shadowDOM.appendChild(scriptEl)
   document.body.appendChild(container)
-  const $root = createRoot(root)
-  $root.render(<App />)
+  // const $root = createRoot(root)
+  // $root.render(<App />)
 })()

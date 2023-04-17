@@ -19,7 +19,8 @@ export default defineConfig({
     sourcemap: false,
     lib: {
       entry: r('src/contentScripts/sdk.ts'),
-      formats: ['es'],
+      formats: ['umd'],
+      name: 'fisandSdk',
     },
     rollupOptions: {
       output: {
