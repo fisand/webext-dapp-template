@@ -19,12 +19,12 @@ export default defineConfig({
     sourcemap: isDev ? 'inline' : false,
     lib: {
       entry: r('src/contentScripts/index.tsx'),
-      formats: ['umd'],
+      formats: ['es'],
       name: 'fisandExt',
     },
     rollupOptions: {
       output: {
-        entryFileNames: 'index.global.js',
+        entryFileNames: 'index.js',
       },
     },
   },
