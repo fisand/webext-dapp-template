@@ -76,7 +76,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/webextension-polyfill": "^0.10.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "@vitejs/plugin-react": "4.0.0-beta.0",
+    "@vitejs/plugin-react": "4.0.0",
     "chokidar": "^3.5.3",
     "cross-env": "^7.0.3",
     "crx": "^5.0.1",
