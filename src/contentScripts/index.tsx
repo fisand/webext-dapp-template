@@ -47,7 +47,10 @@ const setupPageStream = () => {
   const scriptEl = document.createElement('script')
   const shadowDOM = container.attachShadow?.({ mode: __DEV__ ? 'open' : 'closed' }) || container
 
-  scriptEl.setAttribute('src', browser.runtime.getURL('dist/contentScripts/sdk.global.js'))
+  scriptEl.setAttribute(
+    'src',
+    browser.runtime.getURL(__DEV__ ? 'dist/contentScripts/sdk.js' : 'dist/contentScripts/sdk.global.js')
+  )
   styleEl.setAttribute('rel', 'stylesheet')
   styleEl.setAttribute('href', browser.runtime.getURL('dist/contentScripts/style.css'))
 
