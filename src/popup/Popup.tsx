@@ -9,11 +9,11 @@ export function Popup() {
   return (
     <div className="container w-358px h-600px flex-col-center">
       <div className="w-full h-full">
-        <div className="text-base">Account: {address}</div>
-        <div>
+        <div className="text-xs">Account: {address}</div>
+        <div className="mt-2 flex justify-center items-center gap-2">
           {connectors.map((connector) => (
             <button
-              className="w-120px flex-col-center h-10 rounded bg-blue-600 text-sm text-white"
+              className="w-100px flex-col-center h-8 rounded bg-blue-600 text-sm text-white"
               disabled={!connector.ready}
               key={connector.id}
               onClick={() => connect({ connector })}
@@ -24,7 +24,7 @@ export function Popup() {
           ))}
           {isConnected && (
             <button
-              className="w-100px flex-col-center h-10 rounded bg-red-600 text-sm text-white"
+              className="w-100px flex-col-center h-8 rounded bg-red-600 text-sm text-white"
               onClick={() => {
                 disconnect()
               }}

@@ -9,7 +9,7 @@ import EslintPlugin from 'vite-plugin-eslint'
 import nodePolyfills from 'vite-plugin-node-stdlib-browser'
 
 import { isDev, port, r } from './scripts/utils'
-import { MV3Hmr } from './vite-mv-hmr'
+// import { MV3Hmr } from './vite-mv-hmr'
 
 export const sharedConfig: UserConfig = {
   root: r('src'),
@@ -94,7 +94,7 @@ export default defineConfig(({ command }) => {
     plugins: [
       ...sharedConfig.plugins!,
       // popup & options page hmr
-      MV3Hmr(),
+      // MV3Hmr(),
     ],
   }
 })
