@@ -1,6 +1,6 @@
 import ready from 'document-ready'
 import { createRoot } from 'react-dom/client'
-import { configureChains, createClient, WagmiConfig } from 'wagmi'
+import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { arbitrum, arbitrumGoerli, bsc, bscTestnet, goerli, mainnet, polygon } from 'wagmi/chains'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { publicProvider } from 'wagmi/providers/public'
@@ -11,12 +11,12 @@ import { metamaskProvider } from './utils/index'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 
-const { chains, provider, webSocketProvider } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [arbitrum, arbitrumGoerli, bsc, bscTestnet, mainnet, polygon, goerli],
   [publicProvider()]
 )
 
-const client = createClient({
+const config = createConfig({
   autoConnect: true,
   connectors: [
     new MetaMaskConnector({
@@ -28,15 +28,15 @@ const client = createClient({
       } as any,
     }),
   ],
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
 })
 
 ready(() => {
   const root = createRoot(document.getElementById('root')!)
 
   root.render(
-    <WagmiConfig client={client}>
+    <WagmiConfig config={config}>
       <Popup />
     </WagmiConfig>
   )

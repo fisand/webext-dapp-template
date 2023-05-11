@@ -19,12 +19,12 @@ export default defineConfig({
     sourcemap: false,
     lib: {
       entry: r('src/contentScripts/sdk.ts'),
-      formats: ['es'],
+      formats: ['iife'],
       name: 'fisandSdk',
     },
     rollupOptions: {
       output: {
-        entryFileNames: 'sdk.js',
+        entryFileNames: 'sdk.global.js',
       },
     },
   },

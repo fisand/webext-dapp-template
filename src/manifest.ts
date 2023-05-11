@@ -37,13 +37,10 @@ export async function getManifest() {
     content_scripts: [
       {
         matches: ['http://*/*', 'https://*/*'],
-        js: [isDev ? './dist/contentScripts/index.js' : './dist/contentScripts/index.global.js'],
+        js: ['./dist/contentScripts/index.global.js'],
       },
     ],
-    web_accessible_resources: [
-      'dist/contentScripts/style.css',
-      isDev ? 'dist/contentScripts/sdk.js' : 'dist/contentScripts/sdk.global.js',
-    ],
+    web_accessible_resources: ['dist/contentScripts/style.css', 'dist/contentScripts/sdk.global.js'],
     content_security_policy: isDev
       ? // this is required on dev for Vite script to load
         `script-src 'self' http://localhost:${port}; object-src 'self' http://localhost:${port}`

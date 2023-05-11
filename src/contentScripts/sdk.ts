@@ -12,6 +12,8 @@ fisandStream.on('data', (message) => {
   console.log(message)
 })
 
-window.fisand = {
-  connectionStream: fisandStream,
-}
+export default (() => {
+  window.fisand = {
+    connectionStream: fisandStream,
+  }
+})()
