@@ -8,7 +8,7 @@ export default defineConfig(() => ({
     ...(isDev ? { mv3client: './scripts/client.ts' } : {}),
   },
   outDir: 'extension/dist',
-  format: ['esm'],
+  format: ['iife'],
   target: 'esnext',
   ignoreWatch: ['**/extension/**'],
   splitting: false,

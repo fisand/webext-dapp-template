@@ -10,41 +10,47 @@ export async function getManifest() {
   // update this file to update this manifest.json
   // can also be conditional based on your need
   const manifest: Manifest.WebExtensionManifest = {
-    manifest_version: 2,
+    manifest_version: 3,
     // @ts-expect-error -- use pkg displayName if available
     name: pkg.displayName || pkg.name,
     version: pkg.version,
     description: pkg.description,
-    browser_action: {
+    action: {
       default_icon: './assets/wallet.png',
       default_popup: './dist/popup/index.html',
     },
     options_ui: {
       page: './dist/options/index.html',
       open_in_tab: true,
-      chrome_style: false,
     },
     background: {
-      service_worker: './dist/background/index.mjs',
+      service_worker: './dist/background/index.global.js',
     },
     icons: {
       16: './assets/wallet.png',
       48: './assets/wallet.png',
       128: './assets/wallet.png',
     },
-    permissions: ['tabs', 'storage', 'activeTab', 'http://*/', 'https://*/'],
-    // host_permissions: ['*://*/*'],
+    permissions: ['tabs', 'storage', 'activeTab'],
+    host_permissions: ['http://*/', 'https://*/', 'file:///*'],
     content_scripts: [
       {
-        matches: ['http://*/*', 'https://*/*'],
+        matches: ['http://*/*', 'https://*/*', 'file:///*'],
         js: ['./dist/contentScripts/index.global.js'],
       },
     ],
-    web_accessible_resources: ['dist/contentScripts/style.css', 'dist/contentScripts/sdk.global.js'],
-    content_security_policy: isDev
-      ? // this is required on dev for Vite script to load
-        `script-src 'self' http://localhost:${port}; object-src 'self' http://localhost:${port}`
-      : "script-src 'self'; object-src 'self'",
+    web_accessible_resources: [
+      {
+        resources: ['dist/contentScripts/style.css', 'dist/contentScripts/sdk.global.js'],
+        matches: ['<all_urls>'],
+      },
+    ],
+    content_security_policy: {
+      extension_pages: isDev
+        ? // this is required on dev for Vite script to load
+          `script-src 'self' http://localhost:${port}; object-src 'self' http://localhost:${port}`
+        : "script-src 'self'; object-src 'self'",
+    },
   }
 
   if (isDev) {
